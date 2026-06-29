@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM 답변 평가 리더보드</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="phone">
+    <!-- Submission panel -->
+    <section class="submit-panel">
+      <h2>답변 제출</h2>
+      <form id="submit-form">
+        <input type="text" id="employee_id" placeholder="사번 (예: E1234)" required />
+        <input type="text" id="display_name" placeholder="이름 (선택)" />
+        <label class="file-label" id="file-label">
+          <span id="file-name">CSV 파일 선택 (문제번호, 답변)</span>
+          <input type="file" id="file" accept=".csv,text/csv" required hidden />
+        </label>
+        <button type="submit" id="submit-btn">채점 제출</button>
+      </form>
+      <p class="hint" id="quota-hint"></p>
+      <div id="submit-result" class="submit-result" hidden></div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="board">
+      <header class="board-header">
+        <button class="back" aria-label="back">&#8249;</button>
+        <h1>Leaderboard</h1>
+      </header>
+
+      <div id="podium" class="podium"><!-- top 3 --></div>
+
+      <div id="me-card" class="me-card" hidden>
+        <div class="me-avatar" id="me-avatar"></div>
+        <div class="me-name" id="me-name"></div>
+        <div class="me-stats">
+          <div><span class="lbl">Points:</span><span id="me-points"></span></div>
+          <div><span class="lbl">Level:</span><span id="me-level"></span></div>
+          <div><span class="lbl">Position:</span><span id="me-position"></span></div>
+        </div>
+      </div>
+
+      <ul id="rank-list" class="rank-list"><!-- rank 4+ --></ul>
+      <p id="empty-state" class="empty-state" hidden>아직 제출 기록이 없습니다.</p>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
